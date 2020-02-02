@@ -1,18 +1,11 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	_ "gin/controller"
+	"gin/router"
+)
 
-var engine *gin.Engine
-
-func init() {
-	engine = gin.Default()
-}
-
-func main()  {
-	engine.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
+func main() {
+	engine := router.GetEngine()
 	engine.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
